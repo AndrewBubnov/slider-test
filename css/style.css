@@ -24,18 +24,10 @@
     height: 67px;
     padding: 0;
     display: flex;
-    /*flex-wrap: wrap;*/
+
     position: relative;
 }
-/*.inner-wrapper{*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*width: 600px;*/
-    /*overflow: hidden;*/
-    /*margin-top: 50px;*/
-    /*border: 1px solid red;*/
-/*}*/
+
 .button{
     width: 70px;
     height: 40px;

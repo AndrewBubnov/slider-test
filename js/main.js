@@ -1,45 +1,30 @@
 let bl = document.querySelector(".button-left");
 let br = document.querySelector(".button-right");
-let slider = document.querySelector(".slider-content");
 let bigPhoto = document.querySelector(".big-photo");
 let element = document.getElementsByClassName("slider-element");
-let left = 0;
-let clientWidth = element[0].clientWidth;
-let maxWidth = clientWidth * element.length;
-let rightOffset = clientWidth * (element.length - 1);
+
+        for (let i = 0; i < element.length; i++) {
+            element[i].style.order = i + "";
+          }
 
         bl.addEventListener("click", function () {
-            if (left <= -maxWidth) {
-                slider.style.left = '0px';
-                left = 0;
-                for (let i = 0; i < element.length; i++) {
-                    element[i].style.left = '0px';
+        for (let i = 0; i < element.length; i++) {
+                if (element[i].style.order === "0"){
+                    element[i].style.order = (element.length - 1) + "";
+                } else {
+                    element[i].style.order = (parseInt(element[i].style.order) - 1) + "";
                 }
             }
-            for (let i = 0; i < element.length; i++) {
-                if (Math.abs(element[i].offsetLeft + left) < 20) {
-                    element[i].style.left = maxWidth + 'px';
-                }
-            }
-            left -= clientWidth;
-            slider.style.left = left + 'px';
         });
         br.addEventListener("click", function () {
 
-            if (left >= maxWidth) {
-                slider.style.left = '0px';
-                left = 0;
-                for (let i = 0; i < element.length; i++) {
-                    element[i].style.left = '0px';
+        for (let i = 0; i < element.length; i++) {
+                if (element[i].style.order === (element.length - 1) + ""){
+                    element[i].style.order = "0";
+                } else {
+                    element[i].style.order = (parseInt(element[i].style.order) + 1) + "";
                 }
             }
-            for (let i = 0; i < element.length; i++) {
-                if (Math.abs(element[i].offsetLeft + left - rightOffset) < 20) {
-                    element[i].style.left = -maxWidth + 'px';
-                }
-            }
-            left += clientWidth;
-            slider.style.left = left + 'px';
         });
         for (let i = 0; i < element.length; i++) {
             element[i].addEventListener("click", function(e) {
